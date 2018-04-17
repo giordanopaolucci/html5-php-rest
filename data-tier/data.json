@@ -1,0 +1,23 @@
+{
+    "currency": "USD",
+    "pizzaList": [
+        {
+            "id": 1,
+            "imgUrl":"capriccio.jpg",
+            "name":"Capriccio",
+            "price": 7
+        },
+        {
+            "id": 2,
+            "imgUrl":"extravagganza.jpg",
+            "name":"Extravagganza",
+            "price": 8
+        },
+        {
+            "id": 3,
+            "imgUrl":"pepperoni.jpg",
+            "name":"Pepperoni",
+            "price": 7
+        }
+    ]
+}
