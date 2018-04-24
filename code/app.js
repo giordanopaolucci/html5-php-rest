@@ -22,6 +22,7 @@ var app = {
     },
     onError: function(error) {
         console.log("ERROR!! Cause is " + JSON.stringify(error));
+        $("body").html(error.responseText);
     },
     writelist: function() {
         var str = "";

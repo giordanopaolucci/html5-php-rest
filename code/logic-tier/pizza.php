@@ -10,8 +10,7 @@
 
 // Ipotizziamo che il database non sia su questo tier.
 // Facciamo una richiesta HTTP al data tier con curl
-$domain = $_SERVER['HTTP_HOST'];
-$url = $domain . '/data-tier/data.json';
+$url = 'http://host.docker.internal:8080/data-tier/data.json';
 
 $curl = curl_init();
 curl_setopt_array($curl, array(
@@ -20,10 +19,17 @@ curl_setopt_array($curl, array(
         CURLOPT_USERAGENT => 'Marconi test'
     )
 );
-$resp = curl_exec($curl);
-// echo $resp;
+$output = curl_exec($curl);
+curl_close($curl);
+if ($output) {
+    // Just for debug
+    // echo $output;
+} else {
+    echo $url;
+}
 
-$obj = json_decode($resp);
+
+$obj = json_decode($output);
 for($x = 0; $x < count($obj->pizzaList); $x++) {
     $obj->pizzaList[$x]->price *= 0.81;
 }
