@@ -15,15 +15,13 @@ $host = $_SERVER["HTTP_HOST"];
 
 // on docker for linux, host.docker.internal is not yet supported
 // luckily, we need it only for localhost testing! So when the code is 
-// deployed on the rpi, we can use the true host (TODO to verify)
-if (strcmp($output,"localhost:8080")) {
+// deployed on the rpi, we can use the true host
+if (strcmp($host,"localhost:8080") == 0) {
   $baseUrl = 'host.docker.internal:8080';
 } else {
   $baseUrl = $host;
 }
 $url = 'http://' . $baseUrl . $localPath;
-echo $url;
-exit;
 
 $curl = curl_init();
 curl_setopt_array($curl, array(
