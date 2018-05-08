@@ -8,20 +8,7 @@
 // $myJSON = json_encode($myObj);
 // echo $myJSON;
 
-// Ipotizziamo che il database non sia su questo tier.
-// Facciamo una richiesta HTTP al data tier con curl
-$localPath = '/data-tier/data.json';
-$host = $_SERVER["HTTP_HOST"];
-
-// on docker for linux, host.docker.internal is not yet supported
-// luckily, we need it only for localhost testing! So when the code is 
-// deployed on the rpi, we can use the true host
-if (strcmp($host,"localhost:8080") == 0) {
-  $baseUrl = 'host.docker.internal:8080';
-} else {
-  $baseUrl = $host;
-}
-$url = 'http://' . $baseUrl . $localPath;
+$url = 'http://10.3.1.131/data.json';
 
 $curl = curl_init();
 curl_setopt_array($curl, array(
