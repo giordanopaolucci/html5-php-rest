@@ -28,6 +28,7 @@ if ($output) {
 
 
 $obj = json_decode($output);
+$obj->currency = "EUR";
 for($x = 0; $x < count($obj->pizzaList); $x++) {
     $obj->pizzaList[$x]->price *= 0.81;
 }
