@@ -1,6 +1,7 @@
 var app = {
     title: "La mia lista di eventi",
     pizzaList: [],
+    currency: "",
     init: function() {
         console.log("INIT!");
         $("#app_title").html(app.title);
@@ -18,6 +19,7 @@ var app = {
     onSuccess: function(jsonData) {
         console.log(jsonData);
         app.pizzaList = jsonData.pizzaList;
+        app.currency = jsonData.currency;
         app.writelist();
     },
     onError: function(error) {
@@ -26,6 +28,12 @@ var app = {
     },
     writelist: function() {
         var str = "";
+        var currencySymbol = "";
+        if (app.currency == "USD") {
+            currencySymbol = "$";
+        } else if (app.currency == "EUR") {
+            currencySymbol = "€";
+        }
         for (i = 0; i < app.pizzaList.length; i++) {
             console.log(i);
             var pizza = app.pizzaList[i];
@@ -42,7 +50,7 @@ var app = {
             </div>
             <div class="tablecell">
                 <div class="name">
-                €`+pizza.price+`
+                `+currencySymbol+pizza.price+`
                 </div>
             </div>
         </div>`;
