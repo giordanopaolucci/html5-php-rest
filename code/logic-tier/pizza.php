@@ -8,7 +8,7 @@
 // $myJSON = json_encode($myObj);
 // echo $myJSON;
 
-$url = 'http://10.3.1.131/data.json';
+$url = 'https://marconi-197806.firebaseio.com/pizzaApp.json';
 
 $curl = curl_init();
 curl_setopt_array($curl, array(
