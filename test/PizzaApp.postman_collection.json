@@ -1,0 +1,56 @@
+{
+	"info": {
+		"_postman_id": "4a106341-e235-4c34-a834-6cc4178468dd",
+		"name": "PizzaApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Pizza List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "72dba7c5-e380-4c16-b84c-c5e0ccc22d17",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Check currency property\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property('currency');",
+							"});",
+							"",
+							"pm.test(\"Check pizzaList property\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property('pizzaList');",
+							"});",
+							"",
+							"pm.test(\"Check pizzaList is an array\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.pizzaList).to.have.property('count');",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/logic-tier/pizza.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logic-tier",
+						"pizza.php"
+					]
+				},
+				"description": "Simple request to get the list of pizza "
+			},
+			"response": []
+		}
+	]
+}
